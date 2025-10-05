@@ -1,13 +1,11 @@
-from unittest import skipIf
-
 from fastapi import FastAPI, HTTPException
+from backend import models, database, logicValidation, schemas, endPoints
 
+models.database.Base.metadata.create_all(bind=database.engine)
 api = FastAPI()
+api.include_router(endPoints.router)
 
-
-
-#GET
-@api.get('/')
+'''@api.get('/')
 def index():
     return {"message" : 'hello world'}
 
@@ -24,4 +22,4 @@ def post_incident():
 #PUT change status
 @api.put('/vulnerabilities/{vul_id}/status')
 def put_status(vul_id: int, new_status: dict):
-    pass
+    pass'''
