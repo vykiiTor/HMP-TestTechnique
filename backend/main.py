@@ -1,8 +1,18 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from backend import models, database, logicValidation, schemas, endPoints
+from fastapi.middleware.cors import CORSMiddleware
 
 models.database.Base.metadata.create_all(bind=database.engine)
 api = FastAPI()
+
+
+api.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 api.include_router(endPoints.router)
 
 '''@api.get('/')

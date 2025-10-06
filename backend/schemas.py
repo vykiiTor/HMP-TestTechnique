@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from datetime import datetime
 from typing import Optional, List
+from enum import IntEnum
 
 class IncidentBase(BaseModel):
     description: str
@@ -32,3 +33,10 @@ class Vulnerability(VulnerabilityBase):
 
     class Config:
         orm_mode = True
+
+#classification of the severity TODO
+class Severity(IntEnum):
+    CRITICAL = 1
+    HIGH = 2
+    MEDIUM = 3
+    LOW =4

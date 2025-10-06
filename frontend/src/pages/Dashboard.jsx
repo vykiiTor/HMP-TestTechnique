@@ -1,12 +1,20 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { Container, Typography, Stack, Button } from "@mui/material";
-import { vulnerabilities } from "../data/vulnerabilities";
+//import { vulnerabilities } from "../data/vulnerabilities"; removed bc it was had coded info
 import VulnerabilityCard from "../components/VulnerabilityComponent/VulnerabilityCard";
 import Category from "../components/CategoryComponent/Category";
 import IncidentCreate from "../components/IncidentCreateComponent/IncidentCreate";
+import { getVulnerabilities } from "../apiConnection/connection";
 
 export default function Dashboard() {
   const [filter, setFilter] = useState("All");
+  const [vulnerabilities, setVulnerabilities] = useState([]);
+
+  useEffect(() => {
+    getVulnerabilities()
+      .then((data) => setVulnerabilities(data))
+      .catch((err) => console.error("API error:", err));
+  }, []);
 
   const filtered =
     filter === "All"
