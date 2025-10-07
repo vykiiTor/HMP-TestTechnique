@@ -9,26 +9,29 @@ Repository du test technique pour HeadMind Patners
 git clone https://github.com/vykiiTor/HMP-TestTechnique.git
 ```
 
-2. lancer le docker-compose
+2. Rester dans le directory root du projet
 
 ```bash
-docker-compose up -d
+cd  HMP-TestTechnique
 ```
 
-3. Lancer les migrations
+3. Installer FastAPI et Sqlite
 
 ```bash
-cd backend
-todo
+ python -m backend.db_init    
 ```
 
-3. Lancer le serveur
+4. Lancer la base de données depuis root
 
 ```bash
-todo
+ python -m backend.db_init    
 ```
+5. Lancer le backend depuis root
 
-5. Lancer le frontend
+```bash
+ fastapi run backend/main.py
+```
+6. Lancer le frontend
 
 ```bash
 cd frontend
@@ -40,6 +43,15 @@ npm run
 
 ### Routes :
 
-Go to : http://0.0.0.0:8000/docs
+Pour le swagger : http://0.0.0.0:8000/docs 
 
-### Things we did not have time to do :
+### Features faites :
+Backend fait avec persistance des données.   
+3 endpoints pour GET, POST, PUT   
+Validation des champs pour les formulaires (typage seulement)  
+Front basic et responsive avec MUI
+
+### Features à faire
+Améliorer le front avec des % plus précis pour le fait responsive   
+Vérification des champs pour les formulaires avec des objets en plus des types   
+Bonus...

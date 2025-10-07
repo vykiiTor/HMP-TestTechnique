@@ -12,6 +12,7 @@ import {
   Select,
 } from "@mui/material";
 import { vulnerabilities } from "../../data/vulnerabilities";
+import { createIncident } from "../../apiConnection/connection";
 
 export default function CreateIncidentDialog() {
   const [open, setOpen] = useState(false);
