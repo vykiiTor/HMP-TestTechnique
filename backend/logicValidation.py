@@ -1,11 +1,18 @@
 from sqlalchemy.orm import Session
 from backend import models, schemas
 
+
+'''
+logique metier 
+using the shemas for data models and type validation
+
+'''
+
 def get_vulnerabilities(db: Session):
     return db.query(models.Vulnerability).all()
 
 def create_incident(db: Session, incident: schemas.IncidentCreate):
-    db_incident = models.Incident(**incident.dict())
+    db_incident = models.Incident(**incident.dict()) #depriceated but in tutorial
     db.add(db_incident)
     db.commit()
     db.refresh(db_incident)

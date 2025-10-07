@@ -1,7 +1,12 @@
 from pydantic import BaseModel
 from datetime import datetime
-from typing import Optional, List
+from typing import List
 from enum import IntEnum
+
+'''
+using pydantic included with fastApi to def classes and types
+
+'''
 
 class IncidentBase(BaseModel):
     description: str
@@ -14,6 +19,7 @@ class Incident(IncidentBase):
     id: int
     created_at: datetime
 
+    # conversion to dic for sqlAlchemy to sqlite
     class Config:
         orm_mode = True
 
@@ -31,6 +37,7 @@ class Vulnerability(VulnerabilityBase):
     id: int
     incidents: List[Incident] = []
 
+    # conversion to dic for sqlAlchemy to sqlite
     class Config:
         orm_mode = True
 

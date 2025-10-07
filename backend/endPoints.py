@@ -1,7 +1,13 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from backend import logicValidation, models, schemas, database
+from backend import logicValidation, schemas, database
 
+
+'''
+3 endpoints 
+no logic here because of somewhat good archi
+the response is the from schema vuls and inci but not had typed controlled
+'''
 router = APIRouter()
 
 @router.get("/vulnerabilities", response_model=list[schemas.Vulnerability])

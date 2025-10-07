@@ -1,6 +1,10 @@
 from backend import models, database
+
+'''
+Creation of the database with good initial values added and two tables vulnerabilities and incidents
+'''
 models.database.Base.metadata.create_all(bind=database.engine)
-vulns = [
+vulnerabilities = [
     {"name": "CVE-2024-0001: SQL Injection", "severity": "Critical", "system": "Database", "status": "Open"},
     {"name": "CVE-2024-0002: XSS in Admin Panel", "severity": "High", "system": "Web App", "status": "Open"},
     {"name": "CVE-2024-0003: SSL/TLS Config Weakness", "severity": "Medium", "system": "Server", "status": "Open"},
@@ -8,8 +12,8 @@ vulns = [
     {"name": "CVE-2024-0005: Information Disclosure", "severity": "Low", "system": "API", "status": "Open"},
 ]
 db = database.SessionLocal()
-for v in vulns:
-    vuln = models.Vulnerability(**v)
-    db.add(vuln)
+for v in vulnerabilities:
+    vulnerabilitiesTable = models.Vulnerability(**v)
+    db.add(vulnerabilitiesTable)
 db.commit()
 db.close()

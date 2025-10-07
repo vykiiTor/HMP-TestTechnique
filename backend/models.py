@@ -3,6 +3,12 @@ from sqlalchemy.orm import relationship
 from datetime import datetime
 from backend import database
 
+'''
+Using 
+class and sqlite to type the tables in the db
+
+could be using object instead of strings etc 
+'''
 class Vulnerability(database.Base):
     __tablename__ = "vulnerabilities"
 
@@ -19,7 +25,7 @@ class Incident(database.Base):
 
     id = Column(Integer, primary_key=True, index=True)
     description = Column(String)
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=datetime.utcnow)  #depriceated but in tutorial
     vulnerability_id = Column(Integer, ForeignKey("vulnerabilities.id"))
 
     vulnerability = relationship("Vulnerability", back_populates="incidents")
