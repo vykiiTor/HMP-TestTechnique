@@ -18,7 +18,7 @@ cd  HMP-TestTechnique
 3. Installer FastAPI et Sqlite
 
 ```bash
- python -m backend.db_init    
+ pip install "fastapi[standard]"   
 ```
 
 4. Lancer la base de données depuis root
